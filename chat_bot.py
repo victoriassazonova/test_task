@@ -11,6 +11,8 @@ def get_current():
     if emoji in emotions.keys():
         return emotions[emoji], text_time, user_text
     else:
+        # пользователь может ввести и очень длинное сообщение, чтобы не создавать VARCHAR(i) с очень большим i
+        # можно хранить 'TEXT', так как, кажется, не так важно, что именно пользователь ввел
         return None, text_time, 'TEXT'
 
 
