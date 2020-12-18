@@ -29,7 +29,7 @@ def get_answer(last_emotion):
     return current_emotion, response[response_emotion], text_time, user_text
 
 
-# функция бота - цикл сообщение пользователя/ответ бота
+# функция бота - цикл сообщение пользоватлея/ответ бота
 def chat_bot(host_address, port_address, username, user_password):
     last_emotion = None
     while True:
