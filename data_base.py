@@ -1,6 +1,7 @@
 import mysql.connector
 
 
+# функция создания базы данных и таблицы
 def create_db(host_address, port_address, username, user_password):
     con = mysql.connector.connect(host=host_address, port=port_address, user=username, password=user_password)
     cur = con.cursor(dictionary=True)
@@ -18,6 +19,7 @@ def create_db(host_address, port_address, username, user_password):
     return cur
 
 
+# фунция добавления записи в таблицу
 def insert_into_db(text_time, user_text, bot_answer, host_address, port_address, username, user_password):
     con = mysql.connector.connect(host=host_address, port=port_address, database='chatbot', user=username,
                                   password=user_password)

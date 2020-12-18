@@ -3,6 +3,7 @@ from utils import emotions, response
 from data_base import insert_into_db
 
 
+# функция для получения сообщения пользователя и интерпретации его эмоционального окраса
 def get_current():
     raw_input = input()
     text_time = datetime.datetime.now()
@@ -16,14 +17,7 @@ def get_current():
         return None, text_time, 'TEXT'
 
 
-def chat_bot(host_address, port_address, username, user_password):
-    last_emotion = None
-    while True:
-        last_emotion, bot_answer, text_time, user_text = get_answer(last_emotion)
-        print(bot_answer)
-        insert_into_db(text_time, user_text, bot_answer, host_address, port_address, username, user_password)
-
-
+# функция получения ответа бота
 def get_answer(last_emotion):
     current_emotion, text_time, user_text = get_current()
     if last_emotion is None and current_emotion is not None:
@@ -33,3 +27,12 @@ def get_answer(last_emotion):
     else:
         response_emotion = 'not understood'
     return current_emotion, response[response_emotion], text_time, user_text
+
+
+# функция бота - цикл сообщение пользоватлея/ответ бота
+def chat_bot(host_address, port_address, username, user_password):
+    last_emotion = None
+    while True:
+        last_emotion, bot_answer, text_time, user_text = get_answer(last_emotion)
+        print(bot_answer)
+        insert_into_db(text_time, user_text, bot_answer, host_address, port_address, username, user_password)
