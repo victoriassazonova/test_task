@@ -5,7 +5,7 @@ import mysql.connector
 def create_db(host_address, port_address, username, user_password):
     con = mysql.connector.connect(host=host_address, port=port_address, user=username, password=user_password)
     cur = con.cursor(dictionary=True)
-    cur.execute("CREATE DATABASE IF NOT EXISTS chatbot /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;")
+    cur.execute("CREATE DATABASE IF NOT EXISTS chatbot;")
     con = mysql.connector.connect(host=host_address, port=port_address, database='chatbot',
                                   user=username, password=user_password)
     cur = con.cursor(dictionary=True)
